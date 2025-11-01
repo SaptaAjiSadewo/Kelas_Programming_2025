@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aplikasi 1</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container w-50 mt-5 text-center bg-danger h-auto p-5">
+      <h1>Kalkulator</h1>
+
+      <input type="text" id="screen" readonly class="text-end w-25" />
+      <div class="container bg-light w-25 mt-2 mb-3">
+        <br />
+        <div class="btn-group">
+          <button class="btn btn-outline-dark" onclick="tambahAngka(1)">
+            1
+          </button>
+          <button class="btn btn-outline-dark" onclick="tambahAngka(2)">
+            2
+          </button>
+          <button class="btn btn-outline-dark" onclick="tambahAngka(3)">
+            3
+          </button>
+          <button class="btn btn-outline-dark" onclick="operator('+')">
+            +
+          </button>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-outline-dark" onclick="tambahAngka(4)">
+            4
+          </button>
+          <button class="btn btn-outline-dark" onclick="tambahAngka(5)">
+            5
+          </button>
+          <button class="btn btn-outline-dark" onclick="tambahAngka(6)">
+            6
+          </button>
+          <button class="btn btn-outline-dark" onclick="operator('-')">
+            -
+          </button>
+        </div>
+
+        <br />
+
+        <div class="btn-group">
+          <button class="btn btn-outline-dark" onclick="tambahAngka(7)">
+            7
+          </button>
+          <button class="btn btn-outline-dark" onclick="tambahAngka(8)">
+            8
+          </button>
+          <button class="btn btn-outline-dark" onclick="tambahAngka(9)">
+            9
+          </button>
+          <button class="btn btn-outline-dark" onclick="hitung()">=</button>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-outline-dark" onclick="resetAngka()">C</button>
+          <button class="btn btn-outline-dark" onclick="operator('*')">
+            *
+          </button>
+          <button class="btn btn-outline-dark" onclick="operator('/')">
+            /
+          </button>
+        </div>
+
+        <br />
+      </div>
+    </div>
+
+    <script>
+      let nilai1 = "";
+      let nilai2 = "";
+      let opr = "";
+
+      function tambahAngka(angkaDariTombol) {
+        console.log(angkaDariTombol);
+        document.getElementById("screen").value += angkaDariTombol;
+      }
+
+      function kurangAngka(angkaDariTombol) {
+        console.log(angkaDariTombol);
+        document.getElementById("screen").value -= angkaDariTombol;
+      }
+
+      function bagiAngka(angkaDariTombol) {
+        console.log(angkaDariTombol);
+        document.getElementById("screen").value /= angkaDariTombol;
+      }
+
+      function kaliAngka(angkaDariTombol) {
+        console.log(angkaDariTombol);
+        document.getElementById("screen").value *= angkaDariTombol;
+      }
+
+      function operator(operatorDariTombol) {
+        nilai1 = document.getElementById("screen").value;
+        opr = operatorDariTombol;
+        document.getElementById("screen").value = "";
+      }
+
+      function hitung() {
+        nilai2 = document.getElementById("screen").value;
+        let hasil = 0;
+        switch (opr) {
+          case "+":
+            hasil = parseInt(nilai1) + parseInt(nilai2);
+
+            break;
+
+          case "-":
+            hasil = parseInt(nilai1) - parseInt(nilai2);
+            break;
+
+          case "*":
+            hasil = parseInt(nilai1) * parseInt(nilai2);
+            break;
+
+          case "/":
+            hasil = parseInt(nilai1) / parseInt(nilai2);
+            break;
+        }
+        console.log(`Operator yang anda pilih ${opr}`);
+        console.log(hasil);
+
+        document.getElementById("screen").value = hasil;
+      }
+
+      function resetAngka(angkaDariTombol) {
+        console.log(angkaDariTombol);
+        document.getElementById("screen").value = "";
+        let nilai1 = "";
+        let nilai2 = "";
+        let opr = "";
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
